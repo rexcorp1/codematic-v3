@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codematic: AI Coding IDE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://esm.sh/xterm@5.3.0/css/xterm.css" />
+    <script>
+      // Apply theme from localStorage before page load to prevent FOUC
+      (function() {
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+    <script>
+      // Tailwind CSS CDN Configuration
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            typography: {
+              DEFAULT: {
+                css: {
+                  '--tw-prose-body': '#334155',
+                  '--tw-prose-headings': '#1e293b',
+                  '--tw-prose-lead': '#475569',
+                  '--tw-prose-links': '#2563eb',
+                  '--tw-prose-bold': '#0f172a',
+                  '--tw-prose-counters': '#64748b',
+                  '--tw-prose-bullets': '#94a3b8',
+                  '--tw-prose-hr': '#e2e8f0',
+                  '--tw-prose-quotes': '#0f172a',
+                  '--tw-prose-quote-borders': '#e2e8f0',
+                  '--tw-prose-captions': '#64748b',
+                  '--tw-prose-code': '#0f172a',
+                  '--tw-prose-pre-code': '#e2e8f0',
+                  '--tw-prose-pre-bg': '#1e293b',
+                  '--tw-prose-invert-body': '#cbd5e1',
+                  '--tw-prose-invert-headings': '#e2e8f0',
+                  '--tw-prose-invert-lead': '#94a3b8',
+                  '--tw-prose-invert-links': '#60a5fa',
+                  '--tw-prose-invert-bold': '#ffffff',
+                  '--tw-prose-invert-counters': '#94a3b8',
+                  '--tw-prose-invert-bullets': '#475569',
+                  '--tw-prose-invert-hr': '#334155',
+                  '--tw-prose-invert-quotes': '#f1f5f9',
+                  '--tw-prose-invert-quote-borders': '#334155',
+                  '--tw-prose-invert-captions': '#94a3b8',
+                  '--tw-prose-invert-code': '#ffffff',
+                  '--tw-prose-invert-pre-code': '#cbd5e1',
+                  '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
+                  '--tw-prose-invert-th-borders': '#475569',
+                  '--tw-prose-invert-td-borders': '#334155',
+                }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24
+      }
+      
+      /* Light theme scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9; /* slate-100 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #cbd5e1; /* slate-300 */
+        border-radius: 10px;
+        border: 2px solid #f1f5f9; /* slate-100 */
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #94a3b8; /* slate-400 */
+      }
+      
+      /* Dark theme scrollbar */
+      .dark ::-webkit-scrollbar-track {
+        background: #0f172a; /* slate-900 */
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background-color: #334155; /* slate-700 */
+        border-color: #0f172a; /* slate-900 */
+      }
+      .dark ::-webkit-scrollbar-thumb:hover {
+        background-color: #475569; /* slate-600 */
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.21.0",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.0.4",
+    "vite": "https://aistudiocdn.com/vite@^7.1.7",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "monaco-editor": "https://aistudiocdn.com/monaco-editor@^0.53.0",
+    "@webcontainer/api": "https://aistudiocdn.com/@webcontainer/api@^1.6.1",
+    "jszip": "https://aistudiocdn.com/jszip@^3.10.1",
+    "xterm": "https://aistudiocdn.com/xterm@^5.3.0",
+    "xterm-addon-fit": "https://aistudiocdn.com/xterm-addon-fit@^0.8.0",
+    "@monaco-editor/react": "https://aistudiocdn.com/@monaco-editor/react@^4.7.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>
