@@ -4,6 +4,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
 import { WebContainer, WebContainerProcess } from '@webcontainer/api';
+import 'xterm/css/xterm.css';
 
 // Interface for a terminal instance
 interface TerminalInstance {

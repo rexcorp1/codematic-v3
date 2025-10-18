@@ -75,8 +75,12 @@ const CodeEditor: React.FC<CodeEditorProps> & { FileIcon: typeof FileIcon } = ({
         }
         // FIX: The `content` from a file node might not be a string. This type guard
         // ensures we only pass string content to `addExtraLib`, fixing a potential type error.
-        const newLib = monacoInstance.languages.typescript.typescriptDefaults.addExtraLib(content, uri);
-        extraLibsRef.current.set(uri, newLib);
+        // FIX: Argument of type 'unknown' is not assignable to parameter of type 'string'.
+        // Added a type guard to ensure content is a string before passing to addExtraLib.
+        if (typeof content === 'string') {
+          const newLib = monacoInstance.languages.typescript.typescriptDefaults.addExtraLib(content, uri);
+          extraLibsRef.current.set(uri, newLib);
+        }
     }
     
     // Clean up libs for deleted files

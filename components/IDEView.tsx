@@ -532,7 +532,8 @@ const IDEView: React.FC<IDEViewProps> = ({ project, onExit, onUpdate }) => {
             addToast(`${type === 'file' ? 'File' : 'Folder'} '${nodeName}' created successfully.`, 'success');
             setHasUnsavedChanges(true);
         } catch (error) {
-            // FIX: Safely handle errors of type `unknown` from the catch block.
+            // FIX: Argument of type 'unknown' is not assignable to parameter of type 'string'.
+            // Safely handle errors of type `unknown` from the catch block.
             if (error instanceof Error) {
                 addToast(error.message, 'error');
             } else {
@@ -674,7 +675,8 @@ const IDEView: React.FC<IDEViewProps> = ({ project, onExit, onUpdate }) => {
             setHasUnsavedChanges(true);
             addToast('Upload complete!', 'success');
         } catch (error) {
-            // FIX: Safely handle errors of type `unknown` from the catch block.
+            // FIX: Argument of type 'unknown' is not assignable to parameter of type 'string'.
+            // Safely handle errors of type `unknown` from the catch block.
             if (error instanceof Error) {
                 addToast(error.message, 'error');
             } else {
