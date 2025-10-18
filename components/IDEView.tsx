@@ -745,8 +745,8 @@ const IDEView: React.FC<IDEViewProps> = ({ project, onExit, onUpdate }) => {
         
         const newContent = lines.join('\n');
         const newStructure = await handleFileContentChange(path, newContent);
-        
-        if (searchQuery) {
+
+        if (searchQuery && newStructure) {
             const newResults = searchInProject(newStructure, searchQuery.query, searchQuery.options);
             setSearchResults(newResults);
             const currentMatchIndex = newResults.flatMap(r => r.matches).findIndex(m => m.lineNumber > lineIndex);

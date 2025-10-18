@@ -28,7 +28,7 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({ onClose, onCreate }) 
       name: projectName.trim(),
       type: creationType,
       prompt: creationType === 'idea' ? prompt : undefined,
-      file: creationType === 'upload' ? file : undefined,
+      file: creationType === 'upload' ? (file || undefined) : undefined,
       url: creationType === 'repo' ? repoUrl : undefined,
     });
     onClose();

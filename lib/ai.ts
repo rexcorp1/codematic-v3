@@ -46,12 +46,12 @@ export const generateCodeFromPrompt = async (
     attachments: Attachment[]
 ): Promise<AiResponse | null> => {
     
-    if (!process.env.API_KEY) {
-        console.error("API_KEY environment variable not set.");
-        return { summary: "Error: API key is not configured. Please set the API_KEY environment variable." };
+    if (!import.meta.env.VITE_API_KEY) {
+        console.error("VITE_API_KEY environment variable not set.");
+        return { summary: "Error: API key is not configured. Please set the VITE_API_KEY environment variable." };
     }
 
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
     
     const projectContext = formatProjectStructureForAI(projectStructure);
 
@@ -136,12 +136,12 @@ IMPORTANT RULES:
 };
 
 export const generateProjectFromIdea = async (idea: string): Promise<AiFile[] | null> => {
-    if (!process.env.API_KEY) {
-        console.error("API_KEY environment variable not set.");
-        throw new Error("Error: API key is not configured. Please set the API_KEY environment variable.");
+    if (!import.meta.env.VITE_API_KEY) {
+        console.error("VITE_API_KEY environment variable not set.");
+        throw new Error("Error: API key is not configured. Please set the VITE_API_KEY environment variable.");
     }
 
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
 
     const systemInstruction = `You are an expert full-stack web developer AI. Your task is to generate a complete, runnable starter project based on the user's idea. The project should be a Vite + React + TypeScript application.
 
