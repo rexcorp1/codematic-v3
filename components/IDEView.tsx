@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { WebContainer, auth } from '@webcontainer/api';
+import { WebContainer } from '@webcontainer/api';
 import Sidebar from './Sidebar';
 import MainHeader from './MainHeader';
 import AssistantPanel from './AssistantPanel';
@@ -93,11 +93,6 @@ const IDEView: React.FC<IDEViewProps> = ({ project, onExit, onUpdate }) => {
   useEffect(() => {
     const boot = async () => {
       try {
-        auth.init({
-          clientId: 'wc_api_omniverse1.cloud_b66afb6473f0f9664ad2dcc56e22d006',
-          scope: '',
-        });
-
         setWcStatus('booting');
         setWcStatusMessage('Booting WebContainer...');
         const wc = await WebContainer.boot();
